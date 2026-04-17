@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GEVERSI - Official Links.">
     <title>GEVERSI | OFFICIAL LINKS</title>
     <link rel="icon" type="image/png" href="https://www.github.com/geversi.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -20,7 +19,7 @@
             position: fixed; right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -2; object-fit: cover;
-            filter: brightness(0.4) contrast(1.2);
+            filter: brightness(0.3) contrast(1.3);
         }
 
         .cursor-glow {
@@ -31,78 +30,70 @@
 
         .container {
             width: 90%; max-width: 400px; text-align: center;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             padding: 40px 25px; border-radius: 30px;
-            border: 1px solid rgba(0, 191, 255, 0.4);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
-            backdrop-filter: blur(15px); z-index: 2;
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            backdrop-filter: blur(20px); z-index: 2;
         }
 
         .profile-img {
             width: 120px; height: 120px; border-radius: 50%;
-            border: 4px solid #00bfff; margin-bottom: 15px;
-            box-shadow: 0 0 25px #00bfff; transition: 0.5s;
+            border: 3px solid #00bfff; margin-bottom: 15px;
+            box-shadow: 0 0 20px #00bfff; transition: 0.5s;
             object-fit: cover;
         }
 
-        .profile-img:hover { transform: rotate(5deg) scale(1.1); }
+        /* אפקט גליץ' לשם */
+        .glitch {
+            font-size: 42px; font-weight: 900;
+            text-transform: uppercase; position: relative;
+            letter-spacing: 5px; text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
+            animation: glitch 725ms infinite;
+        }
 
-        h1 {
-            font-size: 38px; margin: 0;
-            text-transform: uppercase; letter-spacing: 5px;
-            font-weight: 900; text-shadow: 2px 2px 10px #00bfff;
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
+            15% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
+            16% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
+            49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
+            50% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
+            99% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
+            100% { text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.025em 0 #fffc00; }
         }
 
         .subtitle {
             color: #00bfff; font-size: 14px;
             margin-bottom: 30px; letter-spacing: 2px;
-            font-weight: bold;
+            font-weight: bold; text-shadow: 0 0 5px #00bfff;
         }
 
+        /* כפתורי ניאון */
         .link-btn {
             display: flex; align-items: center; justify-content: center;
             gap: 12px; padding: 18px; margin: 15px 0;
             color: white; text-decoration: none;
             border-radius: 15px; font-weight: bold; font-size: 18px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 191, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative; overflow: hidden;
         }
 
         .link-btn:hover {
-            transform: scale(0.96);
-            background: rgba(0, 191, 255, 0.2);
+            transform: scale(1.02);
+            background: rgba(0, 191, 255, 0.15);
             border-color: #00bfff;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-        }
-
-        .main-platform {
-            background: rgba(255, 0, 0, 0.15);
-            border: 1px solid #ff0000;
-            animation: pulse 2s infinite;
-        }
-
-        .share-btn {
-            background: rgba(0, 191, 255, 0.1);
-            border: 1px dashed #00bfff;
-            margin-top: 30px;
-            font-size: 16px;
-        }
-
-        .footer-text {
-            margin-top: 25px; font-size: 12px; color: #666;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+            text-shadow: 0 0 8px #fff;
         }
 
         .youtube i { color: #ff0000; }
         .tiktok i { color: #fff; }
         .instagram i { color: #e1306c; }
         .discord i { color: #5865f2; }
+
+        .footer-text { margin-top: 25px; font-size: 11px; color: #444; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -115,27 +106,23 @@
 
     <div class="container">
         <img src="https://www.github.com/geversi.png" alt="GEVERSI" class="profile-img">
-        <h1>GEVERSI</h1>
+        <div class="glitch">GEVERSI</div>
         <div class="subtitle">OFFICIAL LINKS</div>
         
-        <a href="https://www.youtube.com/@geversi" class="link-btn youtube main-platform" target="_blank">
+        <a href="https://www.youtube.com/@geversi" class="link-btn" target="_blank">
             <i class="fab fa-youtube"></i> ערוץ היוטיוב
         </a>
-        <a href="https://www.tiktok.com/@geversi1" class="link-btn tiktok" target="_blank">
+        <a href="https://www.tiktok.com/@geversi1" class="link-btn" target="_blank">
             <i class="fab fa-tiktok"></i> טיקטוק
         </a>
-        <a href="https://www.instagram.com/geversieitan/" class="link-btn instagram" target="_blank">
+        <a href="https://www.instagram.com/geversieitan/" class="link-btn" target="_blank">
             <i class="fab fa-instagram"></i> אינסטגרם
         </a>
-        <a href="https://discord.gg/eAurrnstKm" class="link-btn discord" target="_blank">
+        <a href="https://discord.gg/eAurrnstKm" class="link-btn" target="_blank">
             <i class="fab fa-discord"></i> שרת הדיסקורד
         </a>
 
-        <div class="link-btn share-btn" onclick="shareSite()">
-            <i class="fas fa-share-alt"></i> שתפו את הדף
-        </div>
-
-        <div class="footer-text">© 2026 GEVERSI - כל הזכויות שמורות</div>
+        <div class="footer-text">EST. 2026 | GEVERSI DIGITAL</div>
     </div>
 
     <script>
@@ -146,18 +133,6 @@
             glow.style.setProperty('--x', x + '%');
             glow.style.setProperty('--y', y + '%');
         });
-
-        function shareSite() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'GEVERSI - הקישורים הרשמיים',
-                    url: window.location.href
-                });
-            } else {
-                alert("הקישור הועתק!");
-                navigator.clipboard.writeText(window.location.href);
-            }
-        }
     </script>
 </body>
 </html>
