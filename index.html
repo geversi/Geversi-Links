@@ -3,117 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEVERSI | הקישורים הרשמיים</title>
+    <title>GEVERSI | המרכז הרשמי</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden; /* מונע פסי גלילה מיותרים */
+            background-color: #000; color: white;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 100vh; overflow-x: hidden;
         }
 
-        /* רקע וידאו של ברקים */
         #bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -2;
-            object-fit: cover;
-            filter: brightness(0.5) blue(50%); /* מכהה קצת ומוסיף גוון כחול */
+            position: fixed; right: 0; bottom: 0;
+            min-width: 100%; min-height: 100%;
+            z-index: -2; object-fit: cover;
+            filter: brightness(0.4) contrast(1.2);
         }
 
-        /* אפקט תאורה עדין שעוקב אחרי העכבר */
         .cursor-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 150, 255, 0.15) 0%, transparent 25%);
-            pointer-events: none;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 150, 255, 0.2) 0%, transparent 20%);
+            pointer-events: none; z-index: -1;
         }
 
         .container {
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.65); /* שקוף חלקית */
-            padding: 40px 30px;
-            border-radius: 25px;
-            border: 2px solid rgba(0, 191, 255, 0.6);
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
-            backdrop-filter: blur(10px); /* אפקט זכוכית מטושטשת */
-            z-index: 2;
+            width: 90%; max-width: 400px; text-align: center;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 40px 25px; border-radius: 30px;
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+            backdrop-filter: blur(15px); z-index: 2;
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid #00bfff;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px #00bfff;
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 4px solid #00bfff; margin-bottom: 15px;
+            box-shadow: 0 0 25px #00bfff; transition: 0.5s;
             object-fit: cover;
         }
 
+        .profile-img:hover { transform: rotate(5deg) scale(1.1); }
+
         h1 {
-            font-size: 36px;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 900;
-            text-shadow: 0 0 15px #00bfff;
+            font-size: 38px; margin: 0;
+            text-transform: uppercase; letter-spacing: 5px;
+            font-weight: 900; text-shadow: 2px 2px 10px #00bfff;
         }
 
         .subtitle {
-            color: #00bfff;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 35px;
-            letter-spacing: 1px;
+            color: #00bfff; font-size: 14px;
+            margin-bottom: 30px; letter-spacing: 2px;
         }
 
         .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 18px;
-            margin: 18px 0;
-            color: white;
-            text-decoration: none;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 19px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 191, 255, 0.3);
-            transition: all 0.25s ease-out;
+            display: flex; align-items: center; justify-content: center;
+            gap: 12px; padding: 18px; margin: 15px 0;
+            color: white; text-decoration: none;
+            border-radius: 15px; font-weight: bold; font-size: 18px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
 
-        /* אפקט המעיכה (scale) והתאורה בריחוף */
         .link-btn:hover {
-            transform: scale(0.96) translateY(-2px);
-            background: rgba(0, 191, 255, 0.25);
+            transform: scale(0.96);
+            background: rgba(0, 191, 255, 0.2);
             border-color: #00bfff;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
         }
 
-        /* צבעים לאייקונים */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        .main-platform {
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid #ff0000;
+            animation: pulse 2s infinite;
+        }
+
+        .share-btn {
+            background: rgba(0, 191, 255, 0.1);
+            border: 1px dashed #00bfff;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        .footer-text {
+            margin-top: 25px; font-size: 12px; color: #666;
+        }
+
         .youtube i { color: #ff0000; }
-        .tiktok i { color: #fff; text-shadow: 0 0 5px #fff; }
+        .tiktok i { color: #fff; }
         .instagram i { color: #e1306c; }
         .discord i { color: #5865f2; }
-
     </style>
 </head>
 <body>
@@ -125,27 +111,32 @@
     <div class="cursor-glow" id="glow"></div>
 
     <div class="container">
-        <img src="https://www.github.com/geversi.png" alt="GEVERSI Profile" class="profile-img">
-        
+        <img src="https://www.github.com/geversi.png" alt="GEVERSI" class="profile-img">
         <h1>GEVERSI</h1>
-        <div class="subtitle">יוצר תוכן | CONTENT CREATOR</div>
+        <div class="subtitle">OFFICIAL HUB</div>
         
-        <a href="https://www.youtube.com/@geversi" class="link-btn youtube" target="_blank">
-            <i class="fab fa-youtube"></i> ערוץ היוטיוב
+        <a href="https://www.youtube.com/@geversi" class="link-btn youtube main-platform" target="_blank">
+            <i class="fab fa-youtube"></i> הירשמו לערוץ היוטיוב
         </a>
         <a href="https://www.tiktok.com/@geversi1" class="link-btn tiktok" target="_blank">
-            <i class="fab fa-tiktok"></i> טיקטוק ראשי
+            <i class="fab fa-tiktok"></i> טיקטוק (תוכן יומי)
         </a>
         <a href="https://www.instagram.com/geversieitan/" class="link-btn instagram" target="_blank">
             <i class="fab fa-instagram"></i> אינסטגרם
         </a>
         <a href="https://discord.gg/eAurrnstKm" class="link-btn discord" target="_blank">
-            <i class="fab fa-discord"></i> שרת הדיסקורד
+            <i class="fab fa-discord"></i> השרת הרשמי בדיסקורד
         </a>
+
+        <div class="link-btn share-btn" onclick="shareSite()">
+            <i class="fas fa-share-alt"></i> שתפו את הדף עם חברים
+        </div>
+
+        <div class="footer-text">© 2026 GEVERSI - כל הזכויות שמורות</div>
     </div>
 
     <script>
-        // קוד שעוקב אחרי העכבר בשביל אפקט התאורה
+        // אפקט עכבר
         const glow = document.getElementById('glow');
         window.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
@@ -153,7 +144,19 @@
             glow.style.setProperty('--x', x + '%');
             glow.style.setProperty('--y', y + '%');
         });
-    </script>
 
+        // פונקציית שיתוף
+        function shareSite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'GEVERSI - הקישורים הרשמיים',
+                    url: window.location.href
+                });
+            } else {
+                alert("הקישור הועתק! שלחו אותו לחברים: " + window.location.href);
+                navigator.clipboard.writeText(window.location.href);
+            }
+        }
+    </script>
 </body>
 </html>
