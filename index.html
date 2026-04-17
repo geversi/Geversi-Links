@@ -3,89 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEVERSI | OFFICIAL LINKS</title>
+    <title>GEVERSI | קישורים רשמיים</title>
     <link rel="icon" type="image/png" href="https://www.github.com/geversi.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #000; color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex; align-items: center; justify-content: center;
             min-height: 100vh; overflow: hidden;
         }
 
-        /* וידאו ברקע */
-        #bg-video {
-            position: fixed; right: 0; bottom: 0;
-            min-width: 100%; min-height: 100%;
-            z-index: -2; object-fit: cover;
-            filter: brightness(0.5);
-        }
-
-        /* אפקט הבזק ברק על כל המסך */
-        .lightning-flash {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; opacity: 0; pointer-events: none; z-index: -1;
-        }
-
-        @keyframes flash-anim {
-            0% { opacity: 0; }
-            10% { opacity: 0.15; }
-            15% { opacity: 0; }
-            20% { opacity: 0.1; }
-            100% { opacity: 0; }
+        /* קנבס לברקים */
+        canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1; pointer-events: none;
         }
 
         .container {
-            width: 90%; max-width: 400px; text-align: center;
-            background: rgba(0, 10, 30, 0.6);
-            padding: 40px 25px; border-radius: 30px;
-            border: 1px solid rgba(0, 191, 255, 0.4);
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.2);
-            backdrop-filter: blur(12px); z-index: 2;
+            width: 90%; max-width: 380px; text-align: center;
+            background: rgba(0, 5, 20, 0.8);
+            padding: 40px 20px; border-radius: 25px;
+            border: 2px solid #00bfff;
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+            backdrop-filter: blur(15px);
+            z-index: 10; position: relative;
         }
 
         .profile-img {
             width: 110px; height: 110px; border-radius: 50%;
-            border: 3px solid #00bfff; margin-bottom: 15px;
+            border: 3px solid #00bfff; margin-bottom: 20px;
             box-shadow: 0 0 20px #00bfff;
         }
 
-        /* שם בסטייל חשמלי */
-        .electric-name {
-            font-size: 45px; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 4px;
-            color: #fff;
-            text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
-            animation: electric-glow 1.5s ease-in-out infinite alternate;
+        .electric-text {
+            font-size: 50px; font-weight: 900;
+            color: #fff; letter-spacing: 5px;
+            text-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
+            animation: shake 0.15s infinite alternate;
+            font-family: 'Arial Black', sans-serif;
         }
 
-        @keyframes electric-glow {
-            from { text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; opacity: 1; }
-            to { text-shadow: 0 0 15px #00bfff, 0 0 30px #00e5ff, 0 0 50px #00bfff; opacity: 0.9; }
+        @keyframes shake {
+            0% { transform: translate(1px, 1px); }
+            100% { transform: translate(-1px, -1px); }
         }
 
         .subtitle {
-            color: #00bfff; font-size: 14px; margin-bottom: 30px;
-            font-weight: bold; letter-spacing: 3px;
+            color: #00bfff; font-weight: bold; 
+            letter-spacing: 2px; margin-top: 10px; margin-bottom: 25px;
         }
 
         .link-btn {
             display: flex; align-items: center; justify-content: center;
-            gap: 12px; padding: 18px; margin: 15px 0;
+            gap: 15px; padding: 18px; margin: 15px 0;
             color: white; text-decoration: none;
-            border-radius: 12px; font-weight: bold; font-size: 18px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 191, 255, 0.2);
-            transition: 0.3s;
+            border-radius: 15px; font-weight: bold; font-size: 20px;
+            background: rgba(0, 191, 255, 0.1);
+            border: 1px solid #00bfff;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .link-btn:hover {
-            background: rgba(0, 191, 255, 0.25);
-            border-color: #00bfff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+            background: #00bfff; color: #000;
+            box-shadow: 0 0 35px #00bfff;
+            transform: scale(1.05);
         }
 
         .youtube i { color: #ff0000; }
@@ -93,21 +77,19 @@
         .instagram i { color: #e1306c; }
         .discord i { color: #5865f2; }
 
-        .footer-text { margin-top: 25px; font-size: 11px; color: #555; }
+        .link-btn:hover i { color: #000; }
+
+        .footer-text { margin-top: 25px; font-size: 12px; color: #555; }
     </style>
 </head>
 <body>
 
-    <video autoplay loop muted playsinline id="bg-video">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-blue-lightning-strikes-in-the-sky-31414-large.mp4" type="video/mp4">
-    </video>
-
-    <div class="lightning-flash" id="flash"></div>
+    <canvas id="lightning"></canvas>
 
     <div class="container">
         <img src="https://www.github.com/geversi.png" alt="GEVERSI" class="profile-img">
-        <div class="electric-name">GEVERSI</div>
-        <div class="subtitle">OFFICIAL LINKS</div>
+        <div class="electric-text">GEVERSI</div>
+        <div class="subtitle">הקישורים הרשמיים</div>
         
         <a href="https://www.youtube.com/@geversi" class="link-btn" target="_blank">
             <i class="fab fa-youtube"></i> ערוץ היוטיוב
@@ -122,21 +104,55 @@
             <i class="fab fa-discord"></i> שרת הדיסקורד
         </a>
 
-        <div class="footer-text">EST. 2026 | GEVERSI</div>
+        <div class="footer-text">© 2026 GEVERSI | כל הזכויות שמורות</div>
     </div>
 
     <script>
-        // פונקציה ליצירת הבזקי ברק רנדומליים
-        const flash = document.getElementById('flash');
-        function randomFlash() {
-            const delay = Math.random() * 5000 + 2000; // בין 2 ל-7 שניות
-            setTimeout(() => {
-                flash.style.animation = 'flash-anim 0.2s ease-out';
-                setTimeout(() => { flash.style.animation = ''; }, 200);
-                randomFlash();
-            }, delay);
+        const canvas = document.getElementById('lightning');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
         }
-        randomFlash();
+        window.addEventListener('resize', resize);
+        resize();
+
+        function createLightning() {
+            // צבע כחול חשמלי חזק
+            ctx.strokeStyle = '#00f2ff';
+            ctx.lineWidth = Math.random() * 3 + 1;
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = '#00bfff';
+
+            let x = Math.random() * w;
+            let y = 0;
+
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+
+            while (y < h) {
+                x += (Math.random() - 0.5) * 60;
+                y += Math.random() * 40;
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // מנקה את הברק מהר כדי שזה יראה כמו הבזק
+            setTimeout(() => {
+                ctx.clearRect(0, 0, w, h);
+            }, 80);
+        }
+
+        function loop() {
+            // סיכוי של 7% שיווצר ברק בכל פריים
+            if (Math.random() < 0.07) {
+                createLightning();
+            }
+            requestAnimationFrame(loop);
+        }
+        loop();
     </script>
 </body>
 </html>
