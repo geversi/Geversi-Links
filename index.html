@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEVERSI | הקישורים הרשמיים</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden; /* מונע פסי גלילה מיותרים */
+        }
+
+        /* רקע וידאו של ברקים */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2;
+            object-fit: cover;
+            filter: brightness(0.5) blue(50%); /* מכהה קצת ומוסיף גוון כחול */
+        }
+
+        /* אפקט תאורה עדין שעוקב אחרי העכבר */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 150, 255, 0.15) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.65); /* שקוף חלקית */
+            padding: 40px 30px;
+            border-radius: 25px;
+            border: 2px solid rgba(0, 191, 255, 0.6);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+            backdrop-filter: blur(10px); /* אפקט זכוכית מטושטשת */
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid #00bfff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px #00bfff;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+            text-shadow: 0 0 15px #00bfff;
+        }
+
+        .subtitle {
+            color: #00bfff;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 19px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            transition: all 0.25s ease-out;
+        }
+
+        /* אפקט המעיכה (scale) והתאורה בריחוף */
+        .link-btn:hover {
+            transform: scale(0.96) translateY(-2px);
+            background: rgba(0, 191, 255, 0.25);
+            border-color: #00bfff;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+        }
+
+        /* צבעים לאייקונים */
+        .youtube i { color: #ff0000; }
+        .tiktok i { color: #fff; text-shadow: 0 0 5px #fff; }
+        .instagram i { color: #e1306c; }
+        .discord i { color: #5865f2; }
+
+    </style>
+</head>
+<body>
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-blue-lightning-strikes-in-the-sky-31414-large.mp4" type="video/mp4">
+    </video>
+
+    <div class="cursor-glow" id="glow"></div>
+
+    <div class="container">
+        <img src="https://www.github.com/geversi.png" alt="GEVERSI Profile" class="profile-img">
+        
+        <h1>GEVERSI</h1>
+        <div class="subtitle">יוצר תוכן | CONTENT CREATOR</div>
+        
+        <a href="https://www.youtube.com/@geversi" class="link-btn youtube" target="_blank">
+            <i class="fab fa-youtube"></i> ערוץ היוטיוב
+        </a>
+        <a href="https://www.tiktok.com/@geversi1" class="link-btn tiktok" target="_blank">
+            <i class="fab fa-tiktok"></i> טיקטוק ראשי
+        </a>
+        <a href="https://www.instagram.com/geversieitan/" class="link-btn instagram" target="_blank">
+            <i class="fab fa-instagram"></i> אינסטגרם
+        </a>
+        <a href="https://discord.gg/eAurrnstKm" class="link-btn discord" target="_blank">
+            <i class="fab fa-discord"></i> שרת הדיסקורד
+        </a>
+    </div>
+
+    <script>
+        // קוד שעוקב אחרי העכבר בשביל אפקט התאורה
+        const glow = document.getElementById('glow');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            glow.style.setProperty('--x', x + '%');
+            glow.style.setProperty('--y', y + '%');
+        });
+    </script>
+
+</body>
+</html>
