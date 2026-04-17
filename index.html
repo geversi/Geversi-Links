@@ -9,83 +9,83 @@
     <style>
         body {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #000; color: white;
             display: flex; align-items: center; justify-content: center;
-            min-height: 100vh; overflow-x: hidden;
+            min-height: 100vh; overflow: hidden;
         }
 
+        /* וידאו ברקע */
         #bg-video {
             position: fixed; right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -2; object-fit: cover;
-            filter: brightness(0.3) contrast(1.3);
+            filter: brightness(0.5);
         }
 
-        .cursor-glow {
+        /* אפקט הבזק ברק על כל המסך */
+        .lightning-flash {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 150, 255, 0.2) 0%, transparent 20%);
-            pointer-events: none; z-index: -1;
+            background: white; opacity: 0; pointer-events: none; z-index: -1;
+        }
+
+        @keyframes flash-anim {
+            0% { opacity: 0; }
+            10% { opacity: 0.15; }
+            15% { opacity: 0; }
+            20% { opacity: 0.1; }
+            100% { opacity: 0; }
         }
 
         .container {
             width: 90%; max-width: 400px; text-align: center;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 10, 30, 0.6);
             padding: 40px 25px; border-radius: 30px;
-            border: 1px solid rgba(0, 191, 255, 0.3);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
-            backdrop-filter: blur(20px); z-index: 2;
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.2);
+            backdrop-filter: blur(12px); z-index: 2;
         }
 
         .profile-img {
-            width: 120px; height: 120px; border-radius: 50%;
+            width: 110px; height: 110px; border-radius: 50%;
             border: 3px solid #00bfff; margin-bottom: 15px;
-            box-shadow: 0 0 20px #00bfff; transition: 0.5s;
-            object-fit: cover;
+            box-shadow: 0 0 20px #00bfff;
         }
 
-        /* אפקט גליץ' לשם */
-        .glitch {
-            font-size: 42px; font-weight: 900;
-            text-transform: uppercase; position: relative;
-            letter-spacing: 5px; text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
-            animation: glitch 725ms infinite;
+        /* שם בסטייל חשמלי */
+        .electric-name {
+            font-size: 45px; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 40px #00bfff;
+            animation: electric-glow 1.5s ease-in-out infinite alternate;
         }
 
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
-            15% { text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00; }
-            16% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
-            49% { text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00; }
-            50% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
-            99% { text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00; }
-            100% { text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.025em 0 #fffc00; }
+        @keyframes electric-glow {
+            from { text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff; opacity: 1; }
+            to { text-shadow: 0 0 15px #00bfff, 0 0 30px #00e5ff, 0 0 50px #00bfff; opacity: 0.9; }
         }
 
         .subtitle {
-            color: #00bfff; font-size: 14px;
-            margin-bottom: 30px; letter-spacing: 2px;
-            font-weight: bold; text-shadow: 0 0 5px #00bfff;
+            color: #00bfff; font-size: 14px; margin-bottom: 30px;
+            font-weight: bold; letter-spacing: 3px;
         }
 
-        /* כפתורי ניאון */
         .link-btn {
             display: flex; align-items: center; justify-content: center;
             gap: 12px; padding: 18px; margin: 15px 0;
             color: white; text-decoration: none;
-            border-radius: 15px; font-weight: bold; font-size: 18px;
+            border-radius: 12px; font-weight: bold; font-size: 18px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 191, 255, 0.2);
-            transition: all 0.3s ease;
-            position: relative; overflow: hidden;
+            transition: 0.3s;
         }
 
         .link-btn:hover {
-            transform: scale(1.02);
-            background: rgba(0, 191, 255, 0.15);
+            background: rgba(0, 191, 255, 0.25);
             border-color: #00bfff;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
-            text-shadow: 0 0 8px #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
         }
 
         .youtube i { color: #ff0000; }
@@ -93,7 +93,7 @@
         .instagram i { color: #e1306c; }
         .discord i { color: #5865f2; }
 
-        .footer-text { margin-top: 25px; font-size: 11px; color: #444; letter-spacing: 1px; }
+        .footer-text { margin-top: 25px; font-size: 11px; color: #555; }
     </style>
 </head>
 <body>
@@ -102,11 +102,11 @@
         <source src="https://assets.mixkit.co/videos/preview/mixkit-blue-lightning-strikes-in-the-sky-31414-large.mp4" type="video/mp4">
     </video>
 
-    <div class="cursor-glow" id="glow"></div>
+    <div class="lightning-flash" id="flash"></div>
 
     <div class="container">
         <img src="https://www.github.com/geversi.png" alt="GEVERSI" class="profile-img">
-        <div class="glitch">GEVERSI</div>
+        <div class="electric-name">GEVERSI</div>
         <div class="subtitle">OFFICIAL LINKS</div>
         
         <a href="https://www.youtube.com/@geversi" class="link-btn" target="_blank">
@@ -122,17 +122,21 @@
             <i class="fab fa-discord"></i> שרת הדיסקורד
         </a>
 
-        <div class="footer-text">EST. 2026 | GEVERSI DIGITAL</div>
+        <div class="footer-text">EST. 2026 | GEVERSI</div>
     </div>
 
     <script>
-        const glow = document.getElementById('glow');
-        window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            glow.style.setProperty('--x', x + '%');
-            glow.style.setProperty('--y', y + '%');
-        });
+        // פונקציה ליצירת הבזקי ברק רנדומליים
+        const flash = document.getElementById('flash');
+        function randomFlash() {
+            const delay = Math.random() * 5000 + 2000; // בין 2 ל-7 שניות
+            setTimeout(() => {
+                flash.style.animation = 'flash-anim 0.2s ease-out';
+                setTimeout(() => { flash.style.animation = ''; }, 200);
+                randomFlash();
+            }, delay);
+        }
+        randomFlash();
     </script>
 </body>
 </html>
