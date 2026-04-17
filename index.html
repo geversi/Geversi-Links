@@ -116,16 +116,16 @@
         <div class="subtitle">OFFICIAL HUB</div>
         
         <a href="https://www.youtube.com/@geversi" class="link-btn youtube main-platform" target="_blank">
-            <i class="fab fa-youtube"></i> הירשמו לערוץ היוטיוב
+            <i class="fab fa-youtube"></i> ערוץ היוטיוב
         </a>
         <a href="https://www.tiktok.com/@geversi1" class="link-btn tiktok" target="_blank">
-            <i class="fab fa-tiktok"></i> טיקטוק (תוכן יומי)
+            <i class="fab fa-tiktok"></i> טיקטוק
         </a>
         <a href="https://www.instagram.com/geversieitan/" class="link-btn instagram" target="_blank">
             <i class="fab fa-instagram"></i> אינסטגרם
         </a>
         <a href="https://discord.gg/eAurrnstKm" class="link-btn discord" target="_blank">
-            <i class="fab fa-discord"></i> השרת הרשמי בדיסקורד
+            <i class="fab fa-discord"></i> שרת הדיסקורד
         </a>
 
         <div class="link-btn share-btn" onclick="shareSite()">
@@ -136,7 +136,6 @@
     </div>
 
     <script>
-        // אפקט עכבר
         const glow = document.getElementById('glow');
         window.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
@@ -145,7 +144,6 @@
             glow.style.setProperty('--y', y + '%');
         });
 
-        // פונקציית שיתוף
         function shareSite() {
             if (navigator.share) {
                 navigator.share({
@@ -153,7 +151,7 @@
                     url: window.location.href
                 });
             } else {
-                alert("הקישור הועתק! שלחו אותו לחברים: " + window.location.href);
+                alert("הקישור הועתק!");
                 navigator.clipboard.writeText(window.location.href);
             }
         }
