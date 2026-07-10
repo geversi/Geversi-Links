@@ -74,7 +74,6 @@
 
         .youtube i { color: #ff0000; }
         .tiktok i { color: #fff; }
-        .instagram i { color: #e1306c; }
         .discord i { color: #5865f2; }
 
         .link-btn:hover i { color: #000; }
@@ -97,9 +96,6 @@
         <a href="https://www.tiktok.com/@geversi1" class="link-btn" target="_blank">
             <i class="fab fa-tiktok"></i> טיקטוק
         </a>
-        <a href="https://www.instagram.com/geversieitan/" class="link-btn" target="_blank">
-            <i class="fab fa-instagram"></i> אינסטגרם
-        </a>
         <a href="https://discord.gg/qfJeYdMFBq" class="link-btn" target="_blank">
             <i class="fab fa-discord"></i> שרת הדיסקורד
         </a>
@@ -120,7 +116,6 @@
         resize();
 
         function createLightning() {
-            // צבע כחול חשמלי חזק
             ctx.strokeStyle = '#00f2ff';
             ctx.lineWidth = Math.random() * 3 + 1;
             ctx.shadowBlur = 20;
@@ -139,14 +134,12 @@
             }
             ctx.stroke();
 
-            // מנקה את הברק מהר כדי שזה יראה כמו הבזק
             setTimeout(() => {
                 ctx.clearRect(0, 0, w, h);
             }, 80);
         }
 
         function loop() {
-            // סיכוי של 7% שיווצר ברק בכל פריים
             if (Math.random() < 0.07) {
                 createLightning();
             }
